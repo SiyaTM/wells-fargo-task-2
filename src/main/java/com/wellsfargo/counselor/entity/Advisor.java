@@ -5,15 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.io.Serializable;  // Import Serializable from java.io
 
 @Entity
-public class Advisor {
+public class Advisor implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    @JsonIgnore
     private long advisorId;
 
     @Column(nullable = false)
@@ -37,7 +37,6 @@ public class Advisor {
     }
 
     // Constructor initializing all instance variables
-    @JsonIgnore
     public Advisor(String firstName, String lastName, String address, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,60 +45,48 @@ public class Advisor {
         this.email = email;
     }
 
-    // Getter and setter methods
-    @JsonIgnore
+    // Getter and setter methods (might be used by JPA provider)
     public long getAdvisorId() {
         return advisorId;
     }
 
-    @JsonIgnore
     public String getFirstName() {
         return firstName;
     }
 
-    @JsonIgnore
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    @JsonIgnore
     public String getLastName() {
         return lastName;
     }
 
-    @JsonIgnore
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    @JsonIgnore
     public String getAddress() {
         return address;
     }
 
-    @JsonIgnore
     public void setAddress(String address) {
         this.address = address;
     }
 
-    @JsonIgnore
     public String getPhone() {
         return phone;
     }
 
-    @JsonIgnore
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    @JsonIgnore
     public String getEmail() {
         return email;
     }
 
-    @JsonIgnore
     public void setEmail(String email) {
         this.email = email;
     }
 }
-
